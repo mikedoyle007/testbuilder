@@ -41,6 +41,10 @@ var detectNetwork = function(cardNumber) {
   	if (isMaestroLength(cardLength)) {
   		network = "Maestro";
   	}
+  } else if (hasChinaUnionPrefix(cardNumber)) {
+  	if (isChinaUnionLength(cardLength)) {
+  		network = "China UnionPay";
+  	}
   }
   return network;
 };
@@ -102,6 +106,28 @@ function hasMaestroPrefix(cardNumber) {
   return false;
 }
 
+function hasChinaUnionPrefix(cardNumber) {
+  var threeDigitPrefix = cardNumber.slice(0, 3);
+  var fourDigitPrefix = cardNumber.slice(0, 4);
+  var sixDigitPrefix = cardNumber.slice(0, 6);
+  for (var prefix = 624; prefix <= 626; prefix++) {
+  	if (threeDigitPrefix === prefix.toString()) {
+  		return true;
+  	}
+  }
+  for (var prefix = 6282; prefix <= 6288; prefix++) {
+  	if (fourDigitPrefix === prefix.toString()) {
+  		return true;
+  	}
+  }
+  for (var prefix = 622126; prefix <= 622925; prefix++) {
+  	if (sixDigitPrefix === prefix.toString()) {
+  		return true;
+  	}
+  }
+  return false;
+}
+
 
 
 function isDinersLength(length) {
@@ -133,27 +159,29 @@ function isMaestroLength(length) {
   }
   return false;
 }
-// // tests
-// function assertIsEqual(actual, expected, testName) {
-//   if (actual === expected) {
-//   	console.log('passed');
-//   } else {
-//   	console.log('FAILED [' + testName + '] expected ' + expected + ' but got ' + actual);
-//   }
-// }
 
-// function runTestSuite() {
-// 	assertIsEqual(detectNetwork('38345678901234'),      "Diner's Club",     'detected network as expected');
-// 	assertIsEqual(detectNetwork('39345678901234'),      "Diner's Club",     'detected network as expected');
-// 	assertIsEqual(detectNetwork('343456789012345'),     "American Express", 'detected network as expected');
-// 	assertIsEqual(detectNetwork('373456789012345'),     "American Express", 'detected network as expected');
-// 	assertIsEqual(detectNetwork('4123456789012'),       "Visa",             'detected network as expected');
-// 	assertIsEqual(detectNetwork('4123456789012345'),    "Visa",             'detected network as expected');
-// 	assertIsEqual(detectNetwork('4123456789012345678'), "Visa",             'detected network as expected');
-// 	assertIsEqual(detectNetwork('5112345678901234'),    "MasterCard",       'detected network as expected');
-// 	assertIsEqual(detectNetwork('5212345678901234'),    "MasterCard",       'detected network as expected');
-// 	assertIsEqual(detectNetwork('5312345678901234'),    "MasterCard",       'detected network as expected');
-// 	assertIsEqual(detectNetwork('5412345678901234'),    "MasterCard",       'detected network as expected');
-// 	assertIsEqual(detectNetwork('5512345678901234'),    "MasterCard",       'detected network as expected');
-// }
+function isChinaUnionLength(length) {
+  var chinaUnionLength = [16, 17, 18, 19];
+  for (var i = 0; i < chinaUnionLength.length; i++) {
+  	if (length === chinaUnionLength[i]) {
+  		return true;
+  	}
+  }
+  return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
