@@ -27,28 +27,41 @@ var detectNetwork = function(cardNumber) {
   var masterCardPrefix = ['51', '52', '53', '54', '55'];
   var visaPrefix = '4';
   
-  if (cardLength === dinersClubLength) {
-  	if (prefix === dinersClubPrefix[0] || prefix === dinersClubPrefix[1]) {
+  if (prefix === dinersClubPrefix[0] || prefix === dinersClubPrefix[1]) {
+    if (cardLength === dinersClubLength) {
   		network = "Diner's Club";
   	}
-  } else if (cardLength === amexLength) {
-  	if (prefix === amexPrefix[0] || prefix === amexPrefix[1]) {
+  } else if (prefix === amexPrefix[0] || prefix === amexPrefix[1]) {
+  	if (cardLength === amexLength) {
   		network = "American Express";
   	}
-  } else if (cardLength === masterCardLength) {
-  	for (var i = 0; i < masterCardPrefix.length; i++) {
-  	  if (prefix === masterCardPrefix[i]) {
+  } else if (prefix === masterCardPrefix[0] || prefix === masterCardPrefix[1] ||
+  	         prefix === masterCardPrefix[2] || prefix === masterCardPrefix[3] ||
+  	         prefix === masterCardPrefix[4]) {
+  	if (cardLength === masterCardLength) {
   		network = "MasterCard";
-  	  }	
   	}
-  	if (prefix[0] === visaPrefix) {
-  		network = "Visa";
-  	}  	
-  } else if (isVisaCardLength(cardLength)) {
-  	if (prefix[0] === visaPrefix) {
+  } else if (prefix[0] === visaPrefix) {
+  	if (isVisaCardLength(cardLength)) {
   		network = "Visa";
   	}
-  } 
+  }
+
+
+  // else if (cardLength === masterCardLength) {
+  // 	for (var i = 0; i < masterCardPrefix.length; i++) {
+  // 	  if (prefix === masterCardPrefix[i]) {
+  // 		network = "MasterCard";
+  // 	  }	
+  // 	}
+  // 	if (prefix[0] === visaPrefix) {
+  // 		network = "Visa";
+  // 	}  	
+  // } else if (isVisaCardLength(cardLength)) {
+  // 	if (prefix[0] === visaPrefix) {
+  // 		network = "Visa";
+  // 	}
+  // } 
   return network;
 };
 
