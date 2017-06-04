@@ -391,7 +391,7 @@ describe('should support Switch', function() {
       } else if (length === 19) {
         cardNumber.concat('789');
       }
-      detectNetwork(prefix.toString().concat(cardNumber)).should.equal('China UnionPay');
+      detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
     })
   }
   // function test2(prefix) {
