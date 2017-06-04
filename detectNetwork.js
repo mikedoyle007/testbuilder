@@ -34,17 +34,15 @@ var detectNetwork = function(cardNumber) {
   var discoverPrefix = ['6011', '644', '645', '646', '647', '648', '649', '65'];
   var maestroPrefix = ['5018', '5020', '5038', '6304'];
   
-  if (twoDigitPrefix === dinersClubPrefix[0] || twoDigitPrefix === dinersClubPrefix[1]) {
+  if (hasDinersClubPrefix(cardNumber)) {
     if (cardLength === dinersClubLength) {
   		network = "Diner's Club";
   	}
-  } else if (twoDigitPrefix === amexPrefix[0] || twoDigitPrefix === amexPrefix[1]) {
+  } else if (hasAmexPrefix(cardNumber)) {
   	if (cardLength === amexLength) {
   		network = "American Express";
   	}
-  } else if (twoDigitPrefix === masterCardPrefix[0] || twoDigitPrefix === masterCardPrefix[1] ||
-  	         twoDigitPrefix === masterCardPrefix[2] || twoDigitPrefix === masterCardPrefix[3] ||
-  	         twoDigitPrefix === masterCardPrefix[4]) {
+  } else if (hasMasterCardPrefix(cardNumber)) {
   	if (cardLength === masterCardLength) {
   		network = "MasterCard";
   	}
@@ -67,6 +65,34 @@ var detectNetwork = function(cardNumber) {
   }
   return network;
 };
+
+function hasDinersClubPrefix(cardNumber) {
+  var twoDigitPrefix = cardNumber.slice(0, 2);
+  var dinersClubPrefix = ['38', '39'];
+  return (twoDigitPrefix === dinersClubPrefix[0] || twoDigitPrefix === dinersClubPrefix[1]);
+}
+
+function hasAmexPrefix(cardNumber) {
+  var twoDigitPrefix = cardNumber.slice(0, 2);
+  var amexPrefix = ['34', '37'];
+  for (var i = 0; i < amexPrefix.length; i++) {
+  	if (twoDigitPrefix === amexPrefix[i]) {
+  		return true;
+  	}
+  }
+  return false;
+}
+
+function hasMasterCardPrefix(cardNumber) {
+  var twoDigitPrefix = cardNumber.slice(0, 2);
+  var masterCardPrefix = ['51', '52', '53', '54', '55'];
+  for (var i = 0; i < masterCardPrefix.length; i++) {
+  	if (twoDigitPrefix === masterCardPrefix[i]) {
+  		return true;
+  	}
+  }
+  return false;
+}
 
 function isVisaCardLength(length) {
   return (length === 13 || length === 16 || length === 19);
