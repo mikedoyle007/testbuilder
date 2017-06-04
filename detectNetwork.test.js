@@ -394,21 +394,70 @@ describe('should support Switch', function() {
       detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
     })
   }
-  // function test2(prefix) {
-  //   it('has a prefix of ' + prefix + ' and a length of 18', function() {
-  //     detectNetwork(prefix.toString().concat('789012345678')).should.equal('China UnionPay');
-  //   })
-  // }
-  // function test3(prefix) {
-  //   it('has a prefix of ' + prefix + ' and a length of 19', function() {
-  //     detectNetwork(prefix.toString().concat('7890123456789')).should.equal('China UnionPay');
-  //   })
-  // }
+  
+  function test2(prefix, length) {
+    it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+      var cardNumber = '567890123456';
+      if (length === 18) {
+        cardNumber.concat('78');
+      } else if (length === 19) {
+        cardNumber.concat('789');
+      }
+      detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
+    })
+  }
+
+
+
+
+
   for (var prefix = 564182, length = 16; length <= 19; length++) {
     if (length === 17) {
       length++;
     }
     test1(prefix, length);
+  }
+  for (var prefix = 633110, length = 16; length <= 19; length++) {
+    if (length === 17) {
+      length++;
+    }
+    test1(prefix, length);
+  }
+  for (var prefix = 4903, length = 16; length <= 19; length++) {
+    if (length === 17) {
+      length++;
+    }
+    test2(prefix, length);
+  }
+  for (var prefix = 4905, length = 16; length <= 19; length++) {
+    if (length === 17) {
+      length++;
+    }
+    test2(prefix, length);
+  }
+  for (var prefix = 4911, length = 16; length <= 19; length++) {
+    if (length === 17) {
+      length++;
+    }
+    test2(prefix, length);
+  }
+  for (var prefix = 4936, length = 16; length <= 19; length++) {
+    if (length === 17) {
+      length++;
+    }
+    test2(prefix, length);
+  }
+  for (var prefix = 6333, length = 16; length <= 19; length++) {
+    if (length === 17) {
+      length++;
+    }
+    test2(prefix, length);
+  }
+  for (var prefix = 6759, length = 16; length <= 19; length++) {
+    if (length === 17) {
+      length++;
+    }
+    test2(prefix, length);
   }
 
 
