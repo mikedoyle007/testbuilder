@@ -318,12 +318,69 @@ describe('should support China UnionPay', function() {
     })
   }
 
+  function test5(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 16', function() {
+      detectNetwork(prefix.toString().concat('567890123456')).should.equal('China UnionPay');
+    })
+  }
+  function test6(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 17', function() {
+      detectNetwork(prefix.toString().concat('5678901234567')).should.equal('China UnionPay');
+    })
+  }
+  function test7(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 18', function() {
+      detectNetwork(prefix.toString().concat('56789012345678')).should.equal('China UnionPay');
+    })
+  }
+  function test8(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 19', function() {
+      detectNetwork(prefix.toString().concat('567890123456789')).should.equal('China UnionPay');
+    })
+  }
+
+  function test9(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 16', function() {
+      detectNetwork(prefix.toString().concat('7890123456')).should.equal('China UnionPay');
+    })
+  }
+  function test10(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 17', function() {
+      detectNetwork(prefix.toString().concat('78901234567')).should.equal('China UnionPay');
+    })
+  }
+  function test11(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 18', function() {
+      detectNetwork(prefix.toString().concat('789012345678')).should.equal('China UnionPay');
+    })
+  }
+  function test12(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 19', function() {
+      detectNetwork(prefix.toString().concat('7890123456789')).should.equal('China UnionPay');
+    })
+  }
+
+
+
+
 
   for (var prefix = 624; prefix <= 626; prefix++) {
     test1(prefix);
     test2(prefix);
     test3(prefix);
     test4(prefix);
+  }
+  for (var prefix = 6282; prefix <= 6288; prefix++) {
+    test5(prefix);
+    test6(prefix);
+    test7(prefix);
+    test8(prefix);
+  }
+  for (var prefix = 622126; prefix <= 622925; prefix++) {
+    test9 (prefix);
+    test10(prefix);
+    test11(prefix);
+    test12(prefix);
   }
 
 });
