@@ -13,37 +13,20 @@ var detectNetwork = function(cardNumber) {
   // The American Express network always starts with a 34 or 37 and is 15 digits long
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
-  var oneDigitPrefix = cardNumber.slice(0, 1);
-  var twoDigitPrefix = cardNumber.slice(0, 2);
-  var threeDigitPrefix = cardNumber.slice(0, 3);
-  var fourDigitPrefix = cardNumber.slice(0, 4);
+  
   var network = '';
   var cardLength = cardNumber.length;
-
-  var dinersClubLength = 14;  
-  var amexLength = 15;
-  var masterCardLength = 16;
-  var visaLength = [13, 16, 19];
-  var discoverLength = [16, 19];
-  var maestroLength = [12, 13, 14, 15, 16, 17, 18, 19];
-
-  var dinersClubPrefix = ['38', '39'];
-  var amexPrefix = ['34', '37'];
-  var masterCardPrefix = ['51', '52', '53', '54', '55'];
-  var visaPrefix = '4';
-  var discoverPrefix = ['6011', '644', '645', '646', '647', '648', '649', '65'];
-  var maestroPrefix = ['5018', '5020', '5038', '6304'];
   
   if (hasDinersClubPrefix(cardNumber)) {
-    if (cardLength === dinersClubLength) {
+    if (isDinersLength(cardLength)) {
   		network = "Diner's Club";
   	}
   } else if (hasAmexPrefix(cardNumber)) {
-  	if (cardLength === amexLength) {
+  	if (isAmexLength(cardLength)) {
   		network = "American Express";
   	}
   } else if (hasMasterCardPrefix(cardNumber)) {
-  	if (cardLength === masterCardLength) {
+  	if (isMasterCardLength(cardLength)) {
   		network = "MasterCard";
   	}
   } else if (hasVisaPrefix(cardNumber)) {
@@ -117,6 +100,20 @@ function hasMaestroPrefix(cardNumber) {
   	}
   }
   return false;
+}
+
+
+
+function isDinersLength(length) {
+  return (length === 14);
+}
+
+function isAmexLength(length) {
+  return (length === 15);
+}
+
+function isMasterCardLength(length) {
+  return (length === 16);
 }
 
 function isVisaCardLength(length) {
