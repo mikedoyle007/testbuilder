@@ -45,6 +45,10 @@ var detectNetwork = function(cardNumber) {
   	if (isChinaUnionLength(cardLength)) {
   		network = "China UnionPay";
   	}
+  } else if (hasSwitchPrefix(cardNumber)) {
+  	if (isSwitchLength(cardLength)) {
+  		network = "Switch";
+  	}
   }
   return network;
 };
@@ -128,6 +132,24 @@ function hasChinaUnionPrefix(cardNumber) {
   return false;
 }
 
+function hasSwitchPrefix(cardNumber) {
+  var fourDigitPrefix = cardNumber.slice(0, 4);
+  var sixDigitPrefix = cardNumber.slice(0, 6);
+  var switchPrefix4 = ['4903', '4905', '4911', '4936', '6333', '6759'];
+  var switchPrefix6 = ['564182', '633110'];
+  for (var i = 0; i < switchPrefix4.length; i++) {
+  	if (fourDigitPrefix === switchPrefix4[i]) {
+  		return true;
+  	}
+  }
+  for (var i = 0; i < switchPrefix6.length; i++) {
+  	if (sixDigitPrefix === switchPrefix6[i]) {
+  		return true;
+  	}
+  }
+  return false;
+}
+
 
 
 function isDinersLength(length) {
@@ -164,6 +186,16 @@ function isChinaUnionLength(length) {
   var chinaUnionLength = [16, 17, 18, 19];
   for (var i = 0; i < chinaUnionLength.length; i++) {
   	if (length === chinaUnionLength[i]) {
+  		return true;
+  	}
+  }
+  return false;
+}
+
+function isSwitchLength(length) {
+  var switchLength = [16, 18, 19];
+  for (var i = 0; i < switchLength.length; i++) {
+  	if (length === switchLength[i]) {
   		return true;
   	}
   }
