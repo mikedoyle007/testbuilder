@@ -29,6 +29,10 @@ var detectNetwork = function(cardNumber) {
   	if (isMasterCardLength(cardLength)) {
   		network = "MasterCard";
   	}
+  } else if (hasSwitchPrefix(cardNumber)) {
+  	if (isSwitchLength(cardLength)) {
+  		network = "Switch";
+  	}
   } else if (hasVisaPrefix(cardNumber)) {
   	if (isVisaCardLength(cardLength)) {
   		network = "Visa";
@@ -44,11 +48,7 @@ var detectNetwork = function(cardNumber) {
   } else if (hasChinaUnionPrefix(cardNumber)) {
   	if (isChinaUnionLength(cardLength)) {
   		network = "China UnionPay";
-  	}
-  } else if (hasSwitchPrefix(cardNumber)) {
-  	if (isSwitchLength(cardLength)) {
-  		network = "Switch";
-  	}
+  	} 
   }
   return network;
 };
