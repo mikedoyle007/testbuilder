@@ -52,31 +52,31 @@ var detectNetwork = function(cardNumber) {
   return network;
 };
 
-function isVisaCardLength(length) {
-  return (length === 13 || length === 16 || length === 19);
-}
+// function isVisaCardLength(length) {
+//   return (length === 13 || length === 16 || length === 19);
+// }
 
-// tests
-function assertIsEqual(actual, expected, testName) {
-  if (actual === expected) {
-  	console.log('passed');
-  } else {
-  	console.log('FAILED [' + testName + '] expected ' + expected + ' but got ' + actual);
-  }
-}
+// // tests
+// function assertIsEqual(actual, expected, testName) {
+//   if (actual === expected) {
+//   	console.log('passed');
+//   } else {
+//   	console.log('FAILED [' + testName + '] expected ' + expected + ' but got ' + actual);
+//   }
+// }
 
-function runTestSuite() {
-	assertIsEqual(detectNetwork('38345678901234'),      "Diner's Club",     'detected network as expected');
-	assertIsEqual(detectNetwork('39345678901234'),      "Diner's Club",     'detected network as expected');
-	assertIsEqual(detectNetwork('343456789012345'),     "American Express", 'detected network as expected');
-	assertIsEqual(detectNetwork('373456789012345'),     "American Express", 'detected network as expected');
-	assertIsEqual(detectNetwork('4123456789012'),       "Visa",             'detected network as expected');
-	assertIsEqual(detectNetwork('4123456789012345'),    "Visa",             'detected network as expected');
-	assertIsEqual(detectNetwork('4123456789012345678'), "Visa",             'detected network as expected');
-	assertIsEqual(detectNetwork('5112345678901234'),    "MasterCard",       'detected network as expected');
-	assertIsEqual(detectNetwork('5212345678901234'),    "MasterCard",       'detected network as expected');
-	assertIsEqual(detectNetwork('5312345678901234'),    "MasterCard",       'detected network as expected');
-	assertIsEqual(detectNetwork('5412345678901234'),    "MasterCard",       'detected network as expected');
-	assertIsEqual(detectNetwork('5512345678901234'),    "MasterCard",       'detected network as expected');
-}
+// function runTestSuite() {
+// 	assertIsEqual(detectNetwork('38345678901234'),      "Diner's Club",     'detected network as expected');
+// 	assertIsEqual(detectNetwork('39345678901234'),      "Diner's Club",     'detected network as expected');
+// 	assertIsEqual(detectNetwork('343456789012345'),     "American Express", 'detected network as expected');
+// 	assertIsEqual(detectNetwork('373456789012345'),     "American Express", 'detected network as expected');
+// 	assertIsEqual(detectNetwork('4123456789012'),       "Visa",             'detected network as expected');
+// 	assertIsEqual(detectNetwork('4123456789012345'),    "Visa",             'detected network as expected');
+// 	assertIsEqual(detectNetwork('4123456789012345678'), "Visa",             'detected network as expected');
+// 	assertIsEqual(detectNetwork('5112345678901234'),    "MasterCard",       'detected network as expected');
+// 	assertIsEqual(detectNetwork('5212345678901234'),    "MasterCard",       'detected network as expected');
+// 	assertIsEqual(detectNetwork('5312345678901234'),    "MasterCard",       'detected network as expected');
+// 	assertIsEqual(detectNetwork('5412345678901234'),    "MasterCard",       'detected network as expected');
+// 	assertIsEqual(detectNetwork('5512345678901234'),    "MasterCard",       'detected network as expected');
+// }
 
