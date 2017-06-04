@@ -52,9 +52,9 @@ var detectNetwork = function(cardNumber) {
   return network;
 };
 
-function isVisaCardLength(length) {
-  return (length === 13 || length === 16 || length === 19);
-}
+// function isVisaCardLength(length) {
+//   return (length === 13 || length === 16 || length === 19);
+// }
 
 // // tests
 // function assertIsEqual(actual, expected, testName) {
