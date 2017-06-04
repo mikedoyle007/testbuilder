@@ -46,19 +46,15 @@ var detectNetwork = function(cardNumber) {
   	if (cardLength === masterCardLength) {
   		network = "MasterCard";
   	}
-  } else if (oneDigitPrefix === visaPrefix) {
+  } else if (hasVisaPrefix(cardNumber)) {
   	if (isVisaCardLength(cardLength)) {
   		network = "Visa";
   	}
-  } else if (fourDigitPrefix === discoverPrefix[0] || threeDigitPrefix === discoverPrefix[1] ||
-  	         threeDigitPrefix === discoverPrefix[2] || threeDigitPrefix === discoverPrefix[3] ||
-  	         threeDigitPrefix === discoverPrefix[4] || threeDigitPrefix === discoverPrefix[5] ||
-  	         threeDigitPrefix === discoverPrefix[6] || twoDigitPrefix === discoverPrefix[7]) {
+  } else if (hasDiscoverPrefix(cardNumber)) {
   	if (isDiscoverLength(cardLength)) {
   		network = "Discover";
   	}
-  } else if (fourDigitPrefix === maestroPrefix[0] || fourDigitPrefix === maestroPrefix[1] ||
-  	         fourDigitPrefix === maestroPrefix[2] || fourDigitPrefix === maestroPrefix[3]) {
+  } else if (hasMaestroPrefix(cardNumber)) {
   	if (isMaestroLength(cardLength)) {
   		network = "Maestro";
   	}
@@ -66,6 +62,7 @@ var detectNetwork = function(cardNumber) {
   return network;
 };
 
+// helper functions
 function hasDinersClubPrefix(cardNumber) {
   var twoDigitPrefix = cardNumber.slice(0, 2);
   var dinersClubPrefix = ['38', '39'];
@@ -88,6 +85,34 @@ function hasMasterCardPrefix(cardNumber) {
   var masterCardPrefix = ['51', '52', '53', '54', '55'];
   for (var i = 0; i < masterCardPrefix.length; i++) {
   	if (twoDigitPrefix === masterCardPrefix[i]) {
+  		return true;
+  	}
+  }
+  return false;
+}
+
+function hasVisaPrefix(cardNumber) {
+  var oneDigitPrefix = cardNumber.slice(0, 1);
+  var visaPrefix = '4';
+  return (oneDigitPrefix === visaPrefix);
+}
+
+function hasDiscoverPrefix(cardNumber) {
+  var twoDigitPrefix = cardNumber.slice(0, 2);
+  var threeDigitPrefix = cardNumber.slice(0, 3);
+  var fourDigitPrefix = cardNumber.slice(0, 4);
+  var discoverPrefix = ['6011', '644', '645', '646', '647', '648', '649', '65'];
+  return (fourDigitPrefix === discoverPrefix[0] || threeDigitPrefix === discoverPrefix[1] ||
+  	      threeDigitPrefix === discoverPrefix[2] || threeDigitPrefix === discoverPrefix[3] ||
+  	      threeDigitPrefix === discoverPrefix[4] || threeDigitPrefix === discoverPrefix[5] ||
+  	      threeDigitPrefix === discoverPrefix[6] || twoDigitPrefix === discoverPrefix[7]);
+}
+
+function hasMaestroPrefix(cardNumber) {
+  var fourDigitPrefix = cardNumber.slice(0, 4);
+  var maestroPrefix = ['5018', '5020', '5038', '6304'];
+  for (var i = 0; i < maestroPrefix.length; i++) {
+  	if (fourDigitPrefix === maestroPrefix[i]) {
   		return true;
   	}
   }
