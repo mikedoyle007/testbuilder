@@ -360,10 +360,6 @@ describe('should support China UnionPay', function() {
     })
   }
 
-
-
-
-
   for (var prefix = 624; prefix <= 626; prefix++) {
     test1(prefix);
     test2(prefix);
@@ -385,11 +381,38 @@ describe('should support China UnionPay', function() {
 
 });
 
+describe('should support Switch', function() {
+
+  function test1(prefix, length) {
+    it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+      var cardNumber = '7890123456';
+      if (length === 18) {
+        cardNumber.concat('78');
+      } else if (length === 19) {
+        cardNumber.concat('789');
+      }
+      detectNetwork(prefix.toString().concat(cardNumber)).should.equal('China UnionPay');
+    })
+  }
+  // function test2(prefix) {
+  //   it('has a prefix of ' + prefix + ' and a length of 18', function() {
+  //     detectNetwork(prefix.toString().concat('789012345678')).should.equal('China UnionPay');
+  //   })
+  // }
+  // function test3(prefix) {
+  //   it('has a prefix of ' + prefix + ' and a length of 19', function() {
+  //     detectNetwork(prefix.toString().concat('7890123456789')).should.equal('China UnionPay');
+  //   })
+  // }
+  for (var prefix = 564182, length = 16; length <= 19; length++) {
+    if (length === 17) {
+      length++;
+    }
+    test1(prefix, length);
+  }
 
 
-
-
-describe('should support Switch')
+})
 
 
 
