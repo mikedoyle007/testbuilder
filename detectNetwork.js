@@ -13,7 +13,10 @@ var detectNetwork = function(cardNumber) {
   // The American Express network always starts with a 34 or 37 and is 15 digits long
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
-  var prefix = cardNumber.slice(0, 2);
+  var oneDigitPrefix = cardNumber.slice(0, 1);
+  var twoDigitPrefix = cardNumber.slice(0, 2);
+  var threeDigitPrefix = cardNumber.slice(0, 3);
+  var fourDigitPrefix = cardNumber.slice(0, 4);
   var network = '';
   var cardLength = cardNumber.length;
 
@@ -21,29 +24,38 @@ var detectNetwork = function(cardNumber) {
   var amexLength = 15;
   var masterCardLength = 16;
   var visaLength = [13, 16, 19];
+  var discoverLength = [16, 19];
 
   var dinersClubPrefix = ['38', '39'];
   var amexPrefix = ['34', '37'];
   var masterCardPrefix = ['51', '52', '53', '54', '55'];
   var visaPrefix = '4';
+  var discoverPrefix = ['6011', '644', '645', '646', '647', '648', '649', '65'];
   
-  if (prefix === dinersClubPrefix[0] || prefix === dinersClubPrefix[1]) {
+  if (twoDigitPrefix === dinersClubPrefix[0] || twoDigitPrefix === dinersClubPrefix[1]) {
     if (cardLength === dinersClubLength) {
   		network = "Diner's Club";
   	}
-  } else if (prefix === amexPrefix[0] || prefix === amexPrefix[1]) {
+  } else if (twoDigitPrefix === amexPrefix[0] || twoDigitPrefix === amexPrefix[1]) {
   	if (cardLength === amexLength) {
   		network = "American Express";
   	}
-  } else if (prefix === masterCardPrefix[0] || prefix === masterCardPrefix[1] ||
-  	         prefix === masterCardPrefix[2] || prefix === masterCardPrefix[3] ||
-  	         prefix === masterCardPrefix[4]) {
+  } else if (twoDigitPrefix === masterCardPrefix[0] || twoDigitPrefix === masterCardPrefix[1] ||
+  	         twoDigitPrefix === masterCardPrefix[2] || twoDigitPrefix === masterCardPrefix[3] ||
+  	         twoDigitPrefix === masterCardPrefix[4]) {
   	if (cardLength === masterCardLength) {
   		network = "MasterCard";
   	}
-  } else if (prefix[0] === visaPrefix) {
+  } else if (oneDigitPrefix === visaPrefix) {
   	if (isVisaCardLength(cardLength)) {
   		network = "Visa";
+  	}
+  } else if (fourDigitPrefix === discoverPrefix[0] || threeDigitPrefix === discoverPrefix[1] ||
+  	         threeDigitPrefix === discoverPrefix[2] || threeDigitPrefix === discoverPrefix[3] ||
+  	         threeDigitPrefix === discoverPrefix[4] || threeDigitPrefix === discoverPrefix[5] ||
+  	         threeDigitPrefix === discoverPrefix[6] || twoDigitPrefix === discoverPrefix[7]) {
+  	if (isDiscoverLength(cardLength)) {
+  		network = "Discover";
   	}
   }
 
@@ -69,6 +81,9 @@ function isVisaCardLength(length) {
   return (length === 13 || length === 16 || length === 19);
 }
 
+function isDiscoverLength(length) {
+  return (length === 16 || length === 19);
+}
 // // tests
 // function assertIsEqual(actual, expected, testName) {
 //   if (actual === expected) {
