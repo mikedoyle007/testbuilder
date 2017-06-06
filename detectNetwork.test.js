@@ -8,39 +8,6 @@
 // different value.
 var FILL_ME_IN = 'Fill this value in';
  
-// describe('Introduction to Mocha Tests - READ ME FIRST', function() {
-//   // A Mocha test is just a function!
-//   // If the function throws an error when run, it fails.
-//   // If it doesn't throw an error when run, it doesn't fail. 
-//   // To read more about mocha, visit mochajs.org
-
-//   // Once you've read and understood this section, please comment it out. 
-//   // You will not be able to proceed with a failing test. 
-
-//   it('Throws an error so it fails', function() {
-//     throw new Error('Delete me!');
-//   });
-
-//   it('Doesn\'t throw an error, so it doesn\'t fail', function() {
-//     // This test doesn't really test anything at all! It will pass no matter what.
-//     var even = function(num){
-//       return num/2 === 0;
-//     }
-//     return even(10) === true;
-//   });
-
-//   // In tests, we want to compare the expected behavior to the actual behavior.
-//   // A test should only fail if the expected behavior doesn't match the actual.
-//   it('Throws an error when expected behavior does not match actual behavior', function() {
-//     var even = function(num){
-//       return num/2 === 0;
-//     }
-
-//     if(even(10) !== true) {
-//       throw new Error('10 should be even!');
-//     }
-//   });
-// });
 describe('Diner\'s Club', function() {
   // Be careful, tests can have bugs too...
 
@@ -318,82 +285,6 @@ describe('should support Switch', function() {
       })(prefix) 
     }
   }
-
-
-
-
-  // function test1(prefix, length) {
-  //   it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-  //     var cardNumber = '7890123456';
-  //     if (length === 18) {
-  //       cardNumber.concat('78');
-  //     } else if (length === 19) {
-  //       cardNumber.concat('789');
-  //     }
-  //     detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
-  //   })
-  // }
-  
-  // function test2(prefix, length) {
-  //   it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-  //     var cardNumber = '567890123456';
-  //     if (length === 18) {
-  //       cardNumber.concat('78');
-  //     } else if (length === 19) {
-  //       cardNumber.concat('789');
-  //     }
-  //     detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
-  //   })
-  // }
-
-  // for (var prefix = 564182, length = 16; length <= 19; length++) {
-  //   if (length === 17) {
-  //     length++;
-  //   }
-  //   test1(prefix, length);
-  // }
-  // for (var prefix = 633110, length = 16; length <= 19; length++) {
-  //   if (length === 17) {
-  //     length++;
-  //   }
-  //   test1(prefix, length);
-  // }
-  // for (var prefix = 4903, length = 16; length <= 19; length++) {
-  //   if (length === 17) {
-  //     length++;
-  //   }
-  //   test2(prefix, length);
-  // }
-  // for (var prefix = 4905, length = 16; length <= 19; length++) {
-  //   if (length === 17) {
-  //     length++;
-  //   }
-  //   test2(prefix, length);
-  // }
-  // for (var prefix = 4911, length = 16; length <= 19; length++) {
-  //   if (length === 17) {
-  //     length++;
-  //   }
-  //   test2(prefix, length);
-  // }
-  // for (var prefix = 4936, length = 16; length <= 19; length++) {
-  //   if (length === 17) {
-  //     length++;
-  //   }
-  //   test2(prefix, length);
-  // }
-  // for (var prefix = 6333, length = 16; length <= 19; length++) {
-  //   if (length === 17) {
-  //     length++;
-  //   }
-  //   test2(prefix, length);
-  // }
-  // for (var prefix = 6759, length = 16; length <= 19; length++) {
-  //   if (length === 17) {
-  //     length++;
-  //   }
-  //   test2(prefix, length);
-  // }
 })
 
 
