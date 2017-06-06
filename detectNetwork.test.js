@@ -134,66 +134,54 @@ describe('Discover', function() {
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
 
+  function buildCardNumber(prefix, baseNumbers, totalLength) {
+    var cardNumber = prefix;
+    if      (length === 13) {baseNumbers += '3';}
+    else if (length === 14) {baseNumbers += '34';}
+    else if (length === 15) {baseNumbers += '345';}
+    else if (length === 16) {baseNumbers += '3456';}
+    else if (length === 17) {baseNumbers += '34567';}
+    else if (length === 18) {baseNumbers += '345678';}
+    else if (length === 19) {baseNumbers += '3456789';}
+    return cardNumber.toString().concat(baseNumbers);
+  }
+
   for (var prefix = 5018, length = 12; length <= 19; length++) {
     (function(prefix) {
-      var cardNum = '56789012';
-        if      (length === 13) {cardNum += '3';}
-        else if (length === 14) {cardNum += '34';}
-        else if (length === 15) {cardNum += '345';}
-        else if (length === 16) {cardNum += '3456';}
-        else if (length === 17) {cardNum += '34567';}
-        else if (length === 18) {cardNum += '345678';}
-        else if (length === 19) {cardNum += '3456789';}
+      var baseNumbers = '56789012';
+      var cardNumber = buildCardNumber(prefix, baseNumbers, length);
       it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        detectNetwork(prefix + cardNum).should.equal('Maestro');
+        detectNetwork(cardNumber).should.equal('Maestro');
       });
     })(prefix)
   }
   
   for (var prefix = 5020, length = 12; length <= 19; length++) {
     (function(prefix) {
-      var cardNum = '56789012';
-        if      (length === 13) {cardNum += '3';}
-        else if (length === 14) {cardNum += '34';}
-        else if (length === 15) {cardNum += '345';}
-        else if (length === 16) {cardNum += '3456';}
-        else if (length === 17) {cardNum += '34567';}
-        else if (length === 18) {cardNum += '345678';}
-        else if (length === 19) {cardNum += '3456789';}
+      var baseNumbers = '56789012';
+      var cardNumber = buildCardNumber(prefix, baseNumbers, length);
       it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        detectNetwork(prefix + cardNum).should.equal('Maestro');
+        detectNetwork(cardNumber).should.equal('Maestro');
       });
     })(prefix)
   }
 
   for (var prefix = 5038, length = 12; length <= 19; length++) {
     (function(prefix) {
-      var cardNum = '56789012';
-        if      (length === 13) {cardNum += '3';}
-        else if (length === 14) {cardNum += '34';}
-        else if (length === 15) {cardNum += '345';}
-        else if (length === 16) {cardNum += '3456';}
-        else if (length === 17) {cardNum += '34567';}
-        else if (length === 18) {cardNum += '345678';}
-        else if (length === 19) {cardNum += '3456789';}
+      var baseNumbers = '56789012';
+      var cardNumber = buildCardNumber(prefix, baseNumbers, length);
       it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        detectNetwork(prefix + cardNum).should.equal('Maestro');
+        detectNetwork(cardNumber).should.equal('Maestro');
       });
     })(prefix)
   }
 
   for (var prefix = 6304, length = 12; length <= 19; length++) {
     (function(prefix) {
-      var cardNum = '56789012';
-        if      (length === 13) {cardNum += '3';}
-        else if (length === 14) {cardNum += '34';}
-        else if (length === 15) {cardNum += '345';}
-        else if (length === 16) {cardNum += '3456';}
-        else if (length === 17) {cardNum += '34567';}
-        else if (length === 18) {cardNum += '345678';}
-        else if (length === 19) {cardNum += '3456789';}
+      var baseNumbers = '56789012';
+      var cardNumber = buildCardNumber(prefix, baseNumbers, length);
       it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        detectNetwork(prefix + cardNum).should.equal('Maestro');
+        detectNetwork(cardNumber).should.equal('Maestro');
       });
     })(prefix)
   }
@@ -201,14 +189,20 @@ describe('Maestro', function() {
 
 describe('should support China UnionPay', function() {
 
+  function buildCardNumber(prefix, baseNumbers, totalLength) {
+    var cardNumber = prefix;
+         if (length === 17) {baseNumbers += '7';}
+    else if (length === 18) {baseNumbers += '78';}
+    else if (length === 19) {baseNumbers += '789';}
+    return cardNumber.toString().concat(baseNumbers);
+  }
+
   for (var prefix = 624, length = 16; length <= 19; length++) {
     (function(prefix) {
-      var cardNum = '4567890123456';
-        if      (length === 17) {cardNum += '7';}
-        else if (length === 18) {cardNum += '78';}
-        else if (length === 19) {cardNum += '789';}
+      var baseNumbers = '4567890123456';
+      var cardNumber = buildCardNumber(prefix, baseNumbers, length);  
       it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        detectNetwork(prefix + cardNum).should.equal('China UnionPay');
+        detectNetwork(cardNumber).should.equal('China UnionPay');
       });
     })(prefix)
     if (length === 19 && prefix < 626) {
@@ -219,12 +213,10 @@ describe('should support China UnionPay', function() {
 
   for (var prefix = 6282, length = 16; length <= 19; length++) {
     (function(prefix) {
-      var cardNum = '567890123456';
-        if      (length === 17) {cardNum += '7';}
-        else if (length === 18) {cardNum += '78';}
-        else if (length === 19) {cardNum += '789';}
+      var baseNumbers = '567890123456';
+      var cardNumber = buildCardNumber(prefix, baseNumbers, length);
       it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        detectNetwork(prefix + cardNum).should.equal('China UnionPay');
+        detectNetwork(cardNumber).should.equal('China UnionPay');
       });
     })(prefix)
     if (length === 19 && prefix < 6288) {
@@ -235,12 +227,10 @@ describe('should support China UnionPay', function() {
 
   for (var prefix = 622126, length = 16; length <= 19; length++) {
     (function(prefix) {
-      var cardNum = '7890123456';
-        if      (length === 17) {cardNum += '7';}
-        else if (length === 18) {cardNum += '78';}
-        else if (length === 19) {cardNum += '789';}
+      var baseNumbers = '7890123456';
+      var cardNumber = buildCardNumber(prefix, baseNumbers, length);
       it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        detectNetwork(prefix + cardNum).should.equal('China UnionPay');
+        detectNetwork(cardNumber).should.equal('China UnionPay');
       });
     })(prefix)
     if (length === 19 && prefix < 622925) {
