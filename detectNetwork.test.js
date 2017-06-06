@@ -169,8 +169,7 @@ describe('Maestro', function() {
 
   for (var prefix = 5018, length = 12; length <= 19; length++) {
     (function(prefix) {
-      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        var cardNum = '56789012';
+      var cardNum = '56789012';
         if      (length === 13) {cardNum += '3';}
         else if (length === 14) {cardNum += '34';}
         else if (length === 15) {cardNum += '345';}
@@ -178,6 +177,7 @@ describe('Maestro', function() {
         else if (length === 17) {cardNum += '34567';}
         else if (length === 18) {cardNum += '345678';}
         else if (length === 19) {cardNum += '3456789';}
+      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
         detectNetwork(prefix + cardNum).should.equal('Maestro');
       });
     })(prefix)
@@ -185,8 +185,7 @@ describe('Maestro', function() {
   
   for (var prefix = 5020, length = 12; length <= 19; length++) {
     (function(prefix) {
-      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        var cardNum = '56789012';
+      var cardNum = '56789012';
         if      (length === 13) {cardNum += '3';}
         else if (length === 14) {cardNum += '34';}
         else if (length === 15) {cardNum += '345';}
@@ -194,6 +193,7 @@ describe('Maestro', function() {
         else if (length === 17) {cardNum += '34567';}
         else if (length === 18) {cardNum += '345678';}
         else if (length === 19) {cardNum += '3456789';}
+      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
         detectNetwork(prefix + cardNum).should.equal('Maestro');
       });
     })(prefix)
@@ -201,8 +201,7 @@ describe('Maestro', function() {
 
   for (var prefix = 5038, length = 12; length <= 19; length++) {
     (function(prefix) {
-      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        var cardNum = '56789012';
+      var cardNum = '56789012';
         if      (length === 13) {cardNum += '3';}
         else if (length === 14) {cardNum += '34';}
         else if (length === 15) {cardNum += '345';}
@@ -210,6 +209,7 @@ describe('Maestro', function() {
         else if (length === 17) {cardNum += '34567';}
         else if (length === 18) {cardNum += '345678';}
         else if (length === 19) {cardNum += '3456789';}
+      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
         detectNetwork(prefix + cardNum).should.equal('Maestro');
       });
     })(prefix)
@@ -217,8 +217,7 @@ describe('Maestro', function() {
 
   for (var prefix = 6304, length = 12; length <= 19; length++) {
     (function(prefix) {
-      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        var cardNum = '56789012';
+      var cardNum = '56789012';
         if      (length === 13) {cardNum += '3';}
         else if (length === 14) {cardNum += '34';}
         else if (length === 15) {cardNum += '345';}
@@ -226,6 +225,7 @@ describe('Maestro', function() {
         else if (length === 17) {cardNum += '34567';}
         else if (length === 18) {cardNum += '345678';}
         else if (length === 19) {cardNum += '3456789';}
+      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
         detectNetwork(prefix + cardNum).should.equal('Maestro');
       });
     })(prefix)
@@ -234,164 +234,166 @@ describe('Maestro', function() {
 
 describe('should support China UnionPay', function() {
 
-  function test1(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 16', function() {
-      detectNetwork(prefix.toString().concat('4567890123456')).should.equal('China UnionPay');
-    })
-  }
-  function test2(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 17', function() {
-      detectNetwork(prefix.toString().concat('45678901234567')).should.equal('China UnionPay');
-    })
-  }
-  function test3(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 18', function() {
-      detectNetwork(prefix.toString().concat('456789012345678')).should.equal('China UnionPay');
-    })
-  }
-  function test4(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 19', function() {
-      detectNetwork(prefix.toString().concat('4567890123456789')).should.equal('China UnionPay');
-    })
+  for (var prefix = 624, length = 16; length <= 19; length++) {
+    (function(prefix) {
+      var cardNum = '4567890123456';
+        if      (length === 17) {cardNum += '7';}
+        else if (length === 18) {cardNum += '78';}
+        else if (length === 19) {cardNum += '789';}
+      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+        detectNetwork(prefix + cardNum).should.equal('China UnionPay');
+      });
+    })(prefix)
+    if (length === 19 && prefix < 626) {
+      prefix++;
+      length = 15;
+    } 
   }
 
-  function test5(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 16', function() {
-      detectNetwork(prefix.toString().concat('567890123456')).should.equal('China UnionPay');
-    })
-  }
-  function test6(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 17', function() {
-      detectNetwork(prefix.toString().concat('5678901234567')).should.equal('China UnionPay');
-    })
-  }
-  function test7(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 18', function() {
-      detectNetwork(prefix.toString().concat('56789012345678')).should.equal('China UnionPay');
-    })
-  }
-  function test8(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 19', function() {
-      detectNetwork(prefix.toString().concat('567890123456789')).should.equal('China UnionPay');
-    })
+  for (var prefix = 6282, length = 16; length <= 19; length++) {
+    (function(prefix) {
+      var cardNum = '567890123456';
+        if      (length === 17) {cardNum += '7';}
+        else if (length === 18) {cardNum += '78';}
+        else if (length === 19) {cardNum += '789';}
+      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+        detectNetwork(prefix + cardNum).should.equal('China UnionPay');
+      });
+    })(prefix)
+    if (length === 19 && prefix < 6288) {
+      prefix++;
+      length = 15;
+    } 
   }
 
-  function test9(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 16', function() {
-      detectNetwork(prefix.toString().concat('7890123456')).should.equal('China UnionPay');
-    })
+  for (var prefix = 622126, length = 16; length <= 19; length++) {
+    (function(prefix) {
+      var cardNum = '7890123456';
+        if      (length === 17) {cardNum += '7';}
+        else if (length === 18) {cardNum += '78';}
+        else if (length === 19) {cardNum += '789';}
+      it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+        detectNetwork(prefix + cardNum).should.equal('China UnionPay');
+      });
+    })(prefix)
+    if (length === 19 && prefix < 622925) {
+      prefix++;
+      length = 15;
+    } 
   }
-  function test10(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 17', function() {
-      detectNetwork(prefix.toString().concat('78901234567')).should.equal('China UnionPay');
-    })
-  }
-  function test11(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 18', function() {
-      detectNetwork(prefix.toString().concat('789012345678')).should.equal('China UnionPay');
-    })
-  }
-  function test12(prefix) {
-    it('has a prefix of ' + prefix + ' and a length of 19', function() {
-      detectNetwork(prefix.toString().concat('7890123456789')).should.equal('China UnionPay');
-    })
-  }
-
-  for (var prefix = 624; prefix <= 626; prefix++) {
-    test1(prefix);
-    test2(prefix);
-    test3(prefix);
-    test4(prefix);
-  }
-  for (var prefix = 6282; prefix <= 6288; prefix++) {
-    test5(prefix);
-    test6(prefix);
-    test7(prefix);
-    test8(prefix);
-  }
-  for (var prefix = 622126; prefix <= 622925; prefix++) {
-    test9 (prefix);
-    test10(prefix);
-    test11(prefix);
-    test12(prefix);
-  }
-
 });
 
 describe('should support Switch', function() {
 
-  function test1(prefix, length) {
-    it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-      var cardNumber = '7890123456';
-      if (length === 18) {
-        cardNumber.concat('78');
-      } else if (length === 19) {
-        cardNumber.concat('789');
-      }
-      detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
-    })
-  }
-  
-  function test2(prefix, length) {
-    it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
-      var cardNumber = '567890123456';
-      if (length === 18) {
-        cardNumber.concat('78');
-      } else if (length === 19) {
-        cardNumber.concat('789');
-      }
-      detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
-    })
+  for (var i = 0; i < 2; i++) {  
+    var prefix = [564182, 633110];
+    for (var length = 16; length <= 19; length++) {
+      (function(prefix) {
+        if (length === 17) {length++;}
+        var pre = prefix[i];
+        var cardNum = '7890123456';
+          if      (length === 18) {cardNum += '78';}
+          else if (length === 19) {cardNum += '789';}
+          var card = pre.toString().concat(cardNum);
+        it('has a prefix of ' + prefix[i] + ' and a length of ' + length, function() {
+          detectNetwork(card).should.equal('Switch');
+        });
+      })(prefix) 
+    }
   }
 
-  for (var prefix = 564182, length = 16; length <= 19; length++) {
-    if (length === 17) {
-      length++;
+  for (var i = 0; i < 6; i++) {  
+    var prefix = ['4903', '4905', '4911', '4936', '6333', '6759'];
+    for (var length = 16; length <= 19; length++) {
+      (function(prefix) {
+        if (length === 17) {length++;}
+        var pre = prefix[i];
+        var cardNum = '567890123456';
+          if      (length === 18) {cardNum += '78';}
+          else if (length === 19) {cardNum += '789';}
+          var card = pre.toString().concat(cardNum);
+        it('has a prefix of ' + prefix[i] + ' and a length of ' + length, function() {
+          detectNetwork(card).should.equal('Switch');
+        });
+      })(prefix) 
     }
-    test1(prefix, length);
   }
-  for (var prefix = 633110, length = 16; length <= 19; length++) {
-    if (length === 17) {
-      length++;
-    }
-    test1(prefix, length);
-  }
-  for (var prefix = 4903, length = 16; length <= 19; length++) {
-    if (length === 17) {
-      length++;
-    }
-    test2(prefix, length);
-  }
-  for (var prefix = 4905, length = 16; length <= 19; length++) {
-    if (length === 17) {
-      length++;
-    }
-    test2(prefix, length);
-  }
-  for (var prefix = 4911, length = 16; length <= 19; length++) {
-    if (length === 17) {
-      length++;
-    }
-    test2(prefix, length);
-  }
-  for (var prefix = 4936, length = 16; length <= 19; length++) {
-    if (length === 17) {
-      length++;
-    }
-    test2(prefix, length);
-  }
-  for (var prefix = 6333, length = 16; length <= 19; length++) {
-    if (length === 17) {
-      length++;
-    }
-    test2(prefix, length);
-  }
-  for (var prefix = 6759, length = 16; length <= 19; length++) {
-    if (length === 17) {
-      length++;
-    }
-    test2(prefix, length);
-  }
+
+
+
+
+  // function test1(prefix, length) {
+  //   it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+  //     var cardNumber = '7890123456';
+  //     if (length === 18) {
+  //       cardNumber.concat('78');
+  //     } else if (length === 19) {
+  //       cardNumber.concat('789');
+  //     }
+  //     detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
+  //   })
+  // }
+  
+  // function test2(prefix, length) {
+  //   it('has a prefix of ' + prefix + ' and a length of ' + length, function() {
+  //     var cardNumber = '567890123456';
+  //     if (length === 18) {
+  //       cardNumber.concat('78');
+  //     } else if (length === 19) {
+  //       cardNumber.concat('789');
+  //     }
+  //     detectNetwork(prefix.toString().concat(cardNumber)).should.equal('Switch');
+  //   })
+  // }
+
+  // for (var prefix = 564182, length = 16; length <= 19; length++) {
+  //   if (length === 17) {
+  //     length++;
+  //   }
+  //   test1(prefix, length);
+  // }
+  // for (var prefix = 633110, length = 16; length <= 19; length++) {
+  //   if (length === 17) {
+  //     length++;
+  //   }
+  //   test1(prefix, length);
+  // }
+  // for (var prefix = 4903, length = 16; length <= 19; length++) {
+  //   if (length === 17) {
+  //     length++;
+  //   }
+  //   test2(prefix, length);
+  // }
+  // for (var prefix = 4905, length = 16; length <= 19; length++) {
+  //   if (length === 17) {
+  //     length++;
+  //   }
+  //   test2(prefix, length);
+  // }
+  // for (var prefix = 4911, length = 16; length <= 19; length++) {
+  //   if (length === 17) {
+  //     length++;
+  //   }
+  //   test2(prefix, length);
+  // }
+  // for (var prefix = 4936, length = 16; length <= 19; length++) {
+  //   if (length === 17) {
+  //     length++;
+  //   }
+  //   test2(prefix, length);
+  // }
+  // for (var prefix = 6333, length = 16; length <= 19; length++) {
+  //   if (length === 17) {
+  //     length++;
+  //   }
+  //   test2(prefix, length);
+  // }
+  // for (var prefix = 6759, length = 16; length <= 19; length++) {
+  //   if (length === 17) {
+  //     length++;
+  //   }
+  //   test2(prefix, length);
+  // }
 })
 
 
